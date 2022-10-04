@@ -25,12 +25,12 @@ class OrderController extends Controller
         $data['orders']=OrderProduct::with('order','product')->paginate(10);
 
         return view('order.ordermanage', $data);
-    }
+    } //data? we dont have this view
 
     public function destroy($id): RedirectResponse
     {
         try {
-
+            //we dont have this model
             $data = OrderProduct::where('order_id',$id)->get();
             $order_data = Order::where('id', $id)->get();
 
