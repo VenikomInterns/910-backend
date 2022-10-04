@@ -37,6 +37,6 @@ export default {
     name: 'index',
     props: {
         categories: Array
-    }
+    }//excellent
 }
 </script>

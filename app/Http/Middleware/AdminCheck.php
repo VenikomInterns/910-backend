@@ -14,5 +14,5 @@ class AdminCheck
         abort_if(!$user ,401);
         abort_if(!$user->admin,403);
         return $next($request);
-    }
+    } //great
 }

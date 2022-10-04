@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Relations\HasOneThrough;
 class Image extends Model
 {
     use HasFactory;
-    use HasFactory;
+    use HasFactory; // called twice
 
     protected $fillable = [ 'sourceOfImg' ];
 
@@ -22,4 +22,6 @@ class Image extends Model
     {
         return $this->hasOneThrough(Category::class, Product::class);
     }
+
+    //good
 }

@@ -25,7 +25,7 @@ export default {
     methods: {
         submit() {
             this.$inertia.put(route('categories.update', this.category), this.form);
-        }
+        }//excellent
     }
 }
 </script>

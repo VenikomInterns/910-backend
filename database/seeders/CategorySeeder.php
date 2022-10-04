@@ -19,6 +19,7 @@ class CategorySeeder extends Seeder
         Category::query()->create([
             'name' => 'Skincare'
         ]);
+         //excellent
     }
 
 }

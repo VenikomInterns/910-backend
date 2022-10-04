@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Session;
 
 class AdminAuthController extends Controller
 {
+    //are we using this methods because they are not registered
     public function getLogin(){
         return view('admin.auth.login');
     }

@@ -3,7 +3,7 @@
         <label for="name">name</label>
         <br>
         <input type="text" id="name" v-model="form.name">
-        <button type="submit">
+        <button type="submit"> 
             Save
         </button>
     </form>
@@ -21,6 +21,8 @@ export default {
     },
     methods: {
         submit(){
+            //its much better to use form helper methods. For example:
+            // this.form.post(route('categories.store'))
             this.$inertia.post(route('categories.store'),this.form)
         }
     }

@@ -20,24 +20,26 @@ class ImageController extends Controller
         $products = Product::all();
         $images = Image::all();
         return Inertia::render('Image/index', compact('images', 'products'));
-    }
+    }// loading all products and all images ? what if we have thousands of them? 
+    //we dont have Image/Index component
 
     public function show(Image $image): Response
     {
         return Inertia::render('Image/Show', compact('image'));
-    }
+    }  // we dont have Image/Show component
 
     public function create(): Response
     {
         $products = Product::all();
         return Inertia::render('Image/Create', compact('products'));
+        //ok
     }
 
     public function store(Request $request): Redirector|Application|RedirectResponse
     {
         $validated = $request->validate([
-            'image' => 'required|image|mimes:jpeg,png,jpg,svg,webp',
-            'product_id' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg,svg,webp', //ok
+            'product_id' => 'required', //what if product_id doesnt exists
         ]);
 
 //
@@ -45,11 +47,11 @@ class ImageController extends Controller
             $name = $request->file('image')->getClientOriginalName();
             $request->file('image')->storeAs('public/images/', $name);
 
-        }
+        } //good
         $image = new Image();
         $image->name = $name;
-        $image->url = 'http://127.0.0.1:5173/storage/app/public/images/%27.$name';
-        $image->product_id = $validated['productId'];
+        $image->url = 'http://127.0.0.1:5173/storage/app/public/images/%27.$name'; // always same name?
+        $image->product_id = $validated['productId']; // but it's product_id ... hmm 
         $image->save();
 
         return redirect('images');
@@ -59,7 +61,7 @@ class ImageController extends Controller
     public function destroy(Image $image): RedirectResponse
     {
         $path = storage_path() . '/app/public/images/' . $image->name;
-        if (File::exists($path)) {
+        if (File::exists($path)) { // good
             File::delete($path);
         }
         $image->delete();

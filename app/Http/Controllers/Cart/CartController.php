@@ -27,7 +27,7 @@ class CartController extends Controller
      */
     public function buynow(Request $request): RedirectResponse
     {
-        $product = Product::with('category')->findOrFail($request->input('product_id'));
+        $product = Product::with('category')->findOrFail($request->input('product_id')); //good
         $cart = [];
         try {
             $this->validate($request, [
@@ -81,6 +81,8 @@ class CartController extends Controller
 
         session()->flash('message', $product->title.' Added To Cart Successfully!');
         session()->flash('type', 'success');
+
+    //over complicated code but really good idea to save it in sesssion
 
         return redirect()->route('cart.show');
     }

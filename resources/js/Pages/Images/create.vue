@@ -17,6 +17,7 @@
                 id="product_id"
                 type="text"
                 v-model="form.product_id">
+                <!--What if we have thousands of products?-->
                 <option v-for="product in products" :key="product.id" :value="product.id">
                     {{product.name}}
                 </option>

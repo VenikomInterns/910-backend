@@ -20,23 +20,24 @@ class ProductController extends Controller
     {
         $products = Product::all();
         return Inertia::render('Products/index',compact('products'));
-    }
+    }// loading all ? what if we have thousands of products
 
     public function show (Product $product): Response
     {
         return Inertia::render('Products/show',compact('product'));
-    }
+    } // showing without the image?
 
     public function create(): Response
     {
+        //should we send all categories here?
         return Inertia::render('Product/create');
-    }
+    }// ok 
 
 
     public function edit(Product $product): Response
     {
         return Inertia::render('Products/edit',compact('product'));
-    }
+    }//ok, should we send all categories here?
 
     public function update (Product $product, Request $request)
     {
@@ -49,7 +50,7 @@ class ProductController extends Controller
         $product->save();
 
         return redirect()->back();
-    }
+    }// ok Doesnt have ability to chnage category
 
     public function destroy(Product $product): RedirectResponse
     {
@@ -59,11 +60,11 @@ class ProductController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $validated = $this->validate($request, [
-            'categoryId' => 'required',
+            'categoryId' => 'required', // what if user provides string or non existing category
             'name' => 'required',
-            'price' => 'required',
+            'price' => 'required', // what if user provides string 
             'description' => 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg,svg,webp'
+            'image' => 'required|image|mimes:jpeg,png,jpg,svg,webp' //good
         ]);
 
         unset($validated['image']);
@@ -79,7 +80,8 @@ class ProductController extends Controller
             Storage::put($filename, $img);
             $product->image = $filename;
         }
-
+        //what if category is null?  since  category_id doesnt exist in $validated
+        //why not ->save($product) but you are copying all the fields again
         Category::query()->find($validated['category_id'])->products()->create([
             'name' => $product->name,
             'price'=>$product->price,

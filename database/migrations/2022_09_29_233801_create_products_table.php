@@ -14,7 +14,7 @@ return new class extends Migration
             $table->string('name');
             $table->integer('price');
             $table->text('description');
-            $table->foreignId('category_id');
+            $table->foreignId('category_id'); //should be constrained
             $table->timestamps();
         });
     }

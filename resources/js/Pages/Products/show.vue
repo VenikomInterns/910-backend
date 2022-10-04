@@ -1,5 +1,6 @@
 <template>
     <div>
+        <!--Wiill result  in raw json -->
         {{ product }}
     </div>
 </template>

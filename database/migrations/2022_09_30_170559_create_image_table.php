@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('url');
-            $table->foreignId('product_id');
+            $table->foreignId('product_id'); //should be constrained
             $table->timestamps();
         });
     }

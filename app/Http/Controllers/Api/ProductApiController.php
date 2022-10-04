@@ -16,11 +16,11 @@ class ProductApiController extends Controller
             ->paginate(10);
 
         return JsonResource::collection($products);
-    }
+    } //good
 
     public function show(Product $product): JsonResource
     {
         $product->loadMissing('category','image');
         return JsonResource::make($product);
-    }
+    } //good
 }

@@ -40,10 +40,10 @@ Route::middleware([
 
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified', 'admin'])->group(function () {
 
-    Route::resource('categories', CategoryController::class);
+    Route::resource('categories', CategoryController::class);//good
 
-    Route::resource('products', ProductController::class);
+    Route::resource('products', ProductController::class);//good
 
-    Route::resource('images', ImageController::class);
+    Route::resource('images', ImageController::class);//good
 
 });

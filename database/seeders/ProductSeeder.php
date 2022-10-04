@@ -24,7 +24,7 @@ class ProductSeeder extends Seeder
                 'description' => '/',
 
             ]
-        ]);
+        ]); //excellent
 
 
     }

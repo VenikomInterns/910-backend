@@ -21,5 +21,5 @@ Route::prefix('api')->group(function() {
     });
 });
 
-Route::apiResource('products', ProductApiController::class)->only('index','show');
-Route::apiResource('categories', CategoryApiController::class)->only('index');
+Route::apiResource('products', ProductApiController::class)->only('index','show'); //good
+Route::apiResource('categories', CategoryApiController::class)->only('index');//good
